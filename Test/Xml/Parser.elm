@@ -1,10 +1,10 @@
-module Main (..) where
+module Main exposing (..)
 
-import Graphics.Element exposing (show)
+import Html exposing (code, text)
 import Test.Xml.Sample as Xml
 import Xml.Parser exposing (parseXml)
 
 
-main : Graphics.Element.Element
+main : Html.Html msg
 main =
-  show <| parseXml Xml.sample1
+  code [] [ text <| toString <| parseXml Xml.sample1 ]

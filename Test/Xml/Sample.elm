@@ -1,4 +1,4 @@
-module Test.Xml.Sample where
+module Test.Xml.Sample exposing (..)
 
 
 sample1: String

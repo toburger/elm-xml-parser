@@ -1,4 +1,4 @@
-module Main (..) where
+module Main exposing (..)
 
 import Xml.Decode exposing (..)
 import Xml.Parser exposing (XmlAst(..), parseXml)
@@ -13,10 +13,6 @@ xml =
     |> Result.withDefault (Comment "error")
 
 
-
--- |> Debug.log "parsed"
-
-
-main : Html.Html
+main : Html.Html msg
 main =
   pre [] [ text (encode 4 (toJson xml)) ]

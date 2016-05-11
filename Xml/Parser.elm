@@ -1,4 +1,4 @@
-module Xml.Parser (parseXml, XmlAst(..)) where
+module Xml.Parser exposing (parseXml, XmlAst(..))
 
 import Combine exposing (..)
 import Combine.Char exposing (..)

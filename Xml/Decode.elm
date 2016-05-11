@@ -1,9 +1,37 @@
-module Xml.Decode (toJson) where
+module Xml.Decode exposing (toJson)
 
 import Json.Encode exposing (string, object, list, array)
 import Xml.Parser exposing (XmlAst(..))
-import List.Extra as List
+--import List.Extra as List
 import Array
+
+
+takeWhile : (a -> Bool) -> List a -> List a
+takeWhile predicate list =
+  case list of
+    []      -> []
+    x::xs   -> if (predicate x) then x :: takeWhile predicate xs
+               else []
+
+
+dropWhile : (a -> Bool) -> List a -> List a
+dropWhile predicate list =
+  case list of
+    []      -> []
+    x::xs   -> if (predicate x) then dropWhile predicate xs
+               else list
+
+
+span : (a -> Bool) -> List a -> (List a, List a)
+span p xs = (takeWhile p xs, dropWhile p xs)
+
+
+groupBy : (a -> a -> Bool) -> List a -> List (List a)
+groupBy eq xs' =
+  case xs' of
+    [] -> []
+    (x::xs) -> let (ys,zs) = span (eq x) xs
+               in (x::ys)::groupBy eq zs
 
 
 getElementsOrArray : List XmlAst -> List ( String, Json.Encode.Value )
@@ -13,7 +41,7 @@ getElementsOrArray elems =
     ( array', elems' ) =
       elems
         |> List.map toJson'
-        |> List.groupBy (\a b -> fst a == fst b)
+        |> groupBy (\a b -> fst a == fst b)
         |> List.partition (\ls -> List.length ls > 1)
 
     -- flatten the "normal" elements
