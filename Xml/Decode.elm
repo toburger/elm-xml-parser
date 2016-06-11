@@ -92,6 +92,9 @@ toJson' xmlAst =
     Comment comment ->
       ( "__comment", string comment )
 
+    CDATA cdata ->
+      ( "__cdata", string cdata )
+
     Element name [] [ Body txt ] ->
       ( name, string txt )
 

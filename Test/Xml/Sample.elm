@@ -11,7 +11,7 @@ sample1 =
       <genre>Computer</genre>
       <price>44.95</price>
       <publish_date>2000-10-01</publish_date>
-      <description>An in-depth look at creating applications 
+      <description>An in-depth look at creating applications
       with XML.</description>
    </book>
    <book id="bk102">
@@ -20,8 +20,8 @@ sample1 =
       <genre>Fantasy</genre>
       <price>5.95</price>
       <publish_date>2000-12-16</publish_date>
-      <description>A former architect battles corporate zombies, 
-      an evil sorceress, and her own childhood to become queen 
+      <description>A former architect battles corporate zombies,
+      an evil sorceress, and her own childhood to become queen
       of the world.</description>
    </book>
    <book id="bk103">
@@ -30,8 +30,8 @@ sample1 =
       <genre>Fantasy</genre>
       <price>5.95</price>
       <publish_date>2000-11-17</publish_date>
-      <description>After the collapse of a nanotechnology 
-      society in England, the young survivors lay the 
+      <description>After the collapse of a nanotechnology
+      society in England, the young survivors lay the
       foundation for a new society.</description>
    </book>
    <book id="bk104">
@@ -40,9 +40,9 @@ sample1 =
       <genre>Fantasy</genre>
       <price>5.95</price>
       <publish_date>2001-03-10</publish_date>
-      <description>In post-apocalypse England, the mysterious 
-      agent known only as Oberon helps to create a new life 
-      for the inhabitants of London. Sequel to Maeve 
+      <description>In post-apocalypse England, the mysterious
+      agent known only as Oberon helps to create a new life
+      for the inhabitants of London. Sequel to Maeve
       Ascendant.</description>
    </book>
    <book id="bk105">
@@ -51,8 +51,8 @@ sample1 =
       <genre>Fantasy</genre>
       <price>5.95</price>
       <publish_date>2001-09-10</publish_date>
-      <description>The two daughters of Maeve, half-sisters, 
-      battle one another for control of England. Sequel to 
+      <description>The two daughters of Maeve, half-sisters,
+      battle one another for control of England. Sequel to
       Oberon's Legacy.</description>
    </book>
    <book id="bk106">
@@ -61,7 +61,7 @@ sample1 =
       <genre>Romance</genre>
       <price>4.95</price>
       <publish_date>2000-09-02</publish_date>
-      <description>When Carla meets Paul at an ornithology 
+      <description>When Carla meets Paul at an ornithology
       conference, tempers fly as feathers get ruffled.</description>
    </book>
    <book id="bk107">
@@ -70,7 +70,7 @@ sample1 =
       <genre>Romance</genre>
       <price>4.95</price>
       <publish_date>2000-11-02</publish_date>
-      <description>A deep sea diver finds true love twenty 
+      <description>A deep sea diver finds true love twenty
       thousand leagues beneath the sea.</description>
    </book>
    <book id="bk108">
@@ -89,7 +89,7 @@ sample1 =
       <price>6.95</price>
       <publish_date>2000-11-02</publish_date>
       <description>After an inadvertant trip through a Heisenberg
-      Uncertainty Device, James Salway discovers the problems 
+      Uncertainty Device, James Salway discovers the problems
       of being quantum.</description>
    </book>
    <book id="bk110">
@@ -98,7 +98,7 @@ sample1 =
       <genre>Computer</genre>
       <price>36.95</price>
       <publish_date>2000-12-09</publish_date>
-      <description>Microsoft's .NET initiative is explored in 
+      <description>Microsoft's .NET initiative is explored in
       detail in this deep programmer's reference.</description>
    </book>
    <book id="bk111">
@@ -107,8 +107,8 @@ sample1 =
       <genre>Computer</genre>
       <price>36.95</price>
       <publish_date>2000-12-01</publish_date>
-      <description>The Microsoft MSXML3 parser is covered in 
-      detail, with attention to XML DOM interfaces, XSLT processing, 
+      <description>The Microsoft MSXML3 parser is covered in
+      detail, with attention to XML DOM interfaces, XSLT processing,
       SAX and more.</description>
    </book>
    <book id="bk112">
@@ -118,9 +118,24 @@ sample1 =
       <price>49.95</price>
       <publish_date>2001-04-16</publish_date>
       <description>Microsoft Visual Studio 7 is explored in depth,
-      looking at how Visual Basic, Visual C++, C#, and ASP+ are 
-      integrated into a comprehensive development 
+      looking at how Visual Basic, Visual C++, C#, and ASP+ are
+      integrated into a comprehensive development
       environment.</description>
    </book>
 </catalog>
+  """
+
+sample2: String
+sample2 =
+  """
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<error id="">
+  <code>001</code>
+  <message>
+    <![CDATA[
+      Invalid XML:
+      - decimal value (2,010,000,000,000) is greater than maxInclusive facet (999,999,999) for type of valor element in DadosPedido in namespace http://ecommerce.cbmp.com.br: \'<xml-fragment/>\'
+    ]]>
+  </message>
+</error>
   """
