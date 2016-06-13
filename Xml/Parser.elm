@@ -27,6 +27,7 @@ type XmlAst
   = Element Name (List Attribute) (List XmlAst)
   | Body String
   | Comment String
+  | CDATA String
 
 
 spaces : Parser (List Char)
@@ -45,7 +46,7 @@ betweenBoth ch =
     <$> between
           (char ch)
           (char ch)
-          (many1 (noneOf [ ch ]))
+          (many1 ((noneOf [ ch ])) `or` succeed [])
 
 
 betweenSingleQuotes : Parser String
@@ -110,6 +111,12 @@ comment =
     <$> (string "<!--" *> manyTill anyChar (string "-->"))
 
 
+cdata : Parser XmlAst
+cdata =
+  (String.fromList >> String.trim >> CDATA)
+    <$> (string "<![CDATA[" *> manyTill anyChar (string "]]>"))
+
+
 withoutExplicitCloseTag : Parser XmlAst
 withoutExplicitCloseTag =
   (\name attribs -> Element name attribs [])
@@ -134,7 +141,7 @@ xmlParser =
 
 innerXml : Parser XmlAst
 innerXml =
-  comment <|> xmlParser <|> parseBody
+  comment <|> cdata <|> xmlParser <|> parseBody
 
 
 parser : Parser XmlAst
