@@ -7,10 +7,10 @@ import Json.Encode exposing (encode)
 import Html exposing (pre, text)
 
 
-xml : XmlAst
+xml : List XmlAst
 xml =
   parseXml Xml.sample1
-    |> Result.withDefault (Comment "error")
+    |> Result.withDefault [ Comment "error" ]
 
 
 main : Html.Html msg

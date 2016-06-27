@@ -101,7 +101,8 @@ toJson' xmlAst =
     Element name attrs elems ->
       ( name, object (getAttributes attrs ++ getElementsOrArray elems) )
 
-
-toJson : XmlAst -> Json.Encode.Value
+toJson : List XmlAst -> Json.Encode.Value
 toJson xmlAst =
-  object [ toJson' xmlAst ]
+  xmlAst
+    |> List.map toJson'
+    |> object

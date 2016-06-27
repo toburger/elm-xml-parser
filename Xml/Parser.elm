@@ -139,17 +139,22 @@ xmlParser =
   rec (\() -> withExplicitCloseTag) <|> rec (\() -> withoutExplicitCloseTag)
 
 
+rootElements : Parser (List XmlAst)
+rootElements =
+  many1 (choice [ xmlParser, comment <* spaces ])
+
+
 innerXml : Parser XmlAst
 innerXml =
   comment <|> cdata <|> xmlParser <|> parseBody
 
 
-parser : Parser XmlAst
+parser : Parser (List XmlAst)
 parser =
-  spaces *> maybe xmlDeclaration *> spaces *> xmlParser <* spaces <* end
+  spaces *> maybe xmlDeclaration *> spaces *> rootElements <* spaces <* end
 
 
-parseXml : String -> Result'.Result (List String) XmlAst
+parseXml : String -> Result'.Result (List String) (List XmlAst)
 parseXml str =
   case parse parser str of
     ( Ok xml, ctx ) ->
