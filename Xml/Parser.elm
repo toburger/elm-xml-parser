@@ -1,5 +1,12 @@
 module Xml.Parser exposing (parseXml, XmlAst(..))
 
+
+{-| A parser which converts XML into an XmlAst,
+which can be further transformed.
+
+@docs XmlAst, parseXml
+-}
+
 import Combine exposing (..)
 import Combine.Char exposing (..)
 import Combine.Infix exposing (..)
@@ -23,6 +30,7 @@ type alias Attribute =
   ( Key, Value )
 
 
+{-| The XML AST representation -}
 type XmlAst
   = Element Name (List Attribute) (List XmlAst)
   | Body String
@@ -154,6 +162,7 @@ parser =
   spaces *> maybe xmlDeclaration *> spaces *> rootElements <* spaces <* end
 
 
+{-| Trys to parse the input string as an AST -}
 parseXml : String -> Result'.Result (List String) (List XmlAst)
 parseXml str =
   case parse parser str of

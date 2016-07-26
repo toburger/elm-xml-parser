@@ -6,7 +6,10 @@
     "source-directories": [
         "."
     ],
-    "exposed-modules": [],
+    "exposed-modules": [
+        "Xml.Decode",
+        "Xml.Parser"
+    ],
     "dependencies": {
         "Bogdanp/elm-combine": "2.0.0 <= v < 3.0.0",
         "elm-community/elm-json-extra": "1.0.0 <= v < 2.0.0",

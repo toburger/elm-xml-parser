@@ -1,5 +1,11 @@
 module Xml.Decode exposing (toJson)
 
+
+{-| The Decoder converts an XML AST to an Json value
+
+@docs toJson
+-}
+
 import Json.Encode exposing (string, object, list, array)
 import Xml.Parser exposing (XmlAst(..))
 --import List.Extra as List
@@ -101,6 +107,8 @@ toJson' xmlAst =
     Element name attrs elems ->
       ( name, object (getAttributes attrs ++ getElementsOrArray elems) )
 
+
+{-| Converts an XML AST to a Json value -}
 toJson : List XmlAst -> Json.Encode.Value
 toJson xmlAst =
   xmlAst
